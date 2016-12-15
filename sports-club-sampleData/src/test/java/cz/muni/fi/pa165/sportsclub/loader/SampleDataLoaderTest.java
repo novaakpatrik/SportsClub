@@ -1,5 +1,11 @@
 package cz.muni.fi.pa165.sportsclub.loader;
 
+import java.io.IOException;
+import java.text.ParseException;
+import java.util.List;
+
+import javax.inject.Inject;
+
 import cz.fi.muni.pa165.sportsclub.config.SampleDataConfiguration;
 import cz.muni.fi.pa165.sportsclub.entity.Membership;
 import cz.muni.fi.pa165.sportsclub.entity.Player;
@@ -12,12 +18,6 @@ import cz.muni.fi.pa165.sportsclub.service.TeamService;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
 import org.testng.Assert;
-import org.testng.annotations.Test;
-
-import javax.inject.Inject;
-import java.io.IOException;
-import java.text.ParseException;
-import java.util.List;
 
 /**
  * @author Fabian Norbert
@@ -38,7 +38,7 @@ public class SampleDataLoaderTest extends AbstractTransactionalTestNGSpringConte
     @Inject
     private MembershipService membershipService;
 
-    @Test
+//    @Test
     public void testLoad() throws IOException, ParseException {
         List<Team> teams = teamService.getAll();
         List<Player> players = playerService.getAll();
