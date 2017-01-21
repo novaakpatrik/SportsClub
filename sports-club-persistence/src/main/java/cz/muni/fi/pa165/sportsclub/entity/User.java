@@ -7,15 +7,8 @@ import java.util.Objects;
 /**
  *
  * @author Marian Sulgan
- * 
- * Note: regarding milestone 1/2, this entity is neither necessary nor requested,
- * is placed here merely for future purposes, e.g. authentication of users, and 
- * is created now, because we want to make sure, the overall design makes sense 
- * from the utter beginning.
- * 
  */
-@Entity()
-@Table(name = "sportsclubsuser")
+@Entity
 public class User {
     
     @Id

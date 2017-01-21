@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * Enum class representing age groups of Team.
- * 
+ *
  * @author Patrik Novak
  */
 public enum AgeGroup {
@@ -55,7 +55,7 @@ public enum AgeGroup {
 
     public static List<String> getAllLabels() {
         List<String> labels = new ArrayList<>();
-        for(AgeGroup group: values())
+        for (AgeGroup group : values())
             labels.add(group.getLabel());
         return labels;
     }
@@ -68,8 +68,9 @@ public enum AgeGroup {
      * @return AgeGroup for the given birthday
      */
     public static AgeGroup getByDate(Date dateOfBirth) {
-        for(AgeGroup group: values()) {
-            if (dateOfBirth.after(group.getDateFrom()) && dateOfBirth.before(group.dateTo)) {
+        for (AgeGroup group : values()) {
+            if (dateOfBirth.after(group.getDateFrom())
+                    && dateOfBirth.before(group.dateTo)) {
                 return group;
             }
         }
@@ -84,8 +85,8 @@ public enum AgeGroup {
      * @return AgeGroup with the given label
      */
     public static AgeGroup getByLabel(String label) {
-        for(AgeGroup group: values()) {
-            if(group.getLabel().equals(label))
+        for (AgeGroup group : values()) {
+            if (group.getLabel().equals(label))
                 return group;
         }
         return AgeGroup.NOT_CATEGORIZED;
@@ -100,7 +101,7 @@ public enum AgeGroup {
 
     private Date yearAgoFromNow(int years) {
         Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.YEAR, - years);
+        cal.add(Calendar.YEAR, -years);
         return cal.getTime();
     }
 }

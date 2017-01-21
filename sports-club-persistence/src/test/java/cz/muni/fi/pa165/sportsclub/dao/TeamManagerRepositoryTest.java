@@ -66,34 +66,6 @@ public class TeamManagerRepositoryTest extends AbstractTestNGSpringContextTests 
         assertEquals(teamManagerDao.getAll().size(), 2);
     }
     
-    @Test
-    public void testAddTeam() {
-         Team team = entityFactoryPersistence.createPersistedTeam(teamDao);
-         teamManager.addTeam(team);
-         teamManagerDao.update(teamManager);
-         assertEquals(teamManager.getTeams().size(), 1);
-         assertEquals(teamManager.getTeams().contains(team), true);
-    }
-    
-    @Test
-    public void testRemoveTeamById() {
-        Team t1 = entityFactoryPersistence.createPersistedTeam("team1", teamDao);
-        Team t2 = entityFactoryPersistence.createPersistedTeam("team2", teamDao);
-        Team t3 = entityFactoryPersistence.createPersistedTeam("team3", teamDao);
-        
-        teamManager.addTeam(t1);
-        teamManager.addTeam(t2);
-        teamManager.addTeam(t3);
-        
-        teamManagerDao.update(teamManager);
-        
-        teamManager.removeTeamById(t2.getId());
-        
-        assertEquals(teamManager.getTeams().size(), 2);
-        assertEquals(teamManager.getTeams().contains(t1), true);
-        assertEquals(teamManager.getTeams().contains(t3), true);
-    }
-    
     @Test(expectedExceptions = ConstraintViolationException.class)
     public void testNullName() {
         TeamManager tm = new TeamManager();

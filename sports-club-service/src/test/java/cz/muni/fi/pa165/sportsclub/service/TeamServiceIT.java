@@ -92,7 +92,7 @@ public class TeamServiceIT extends AbstractTransactionalTestNGSpringContextTests
 
     @Test
     public void getTeamWithPlayers() {
-        Player player = new Player().setFirstName("FirstName").setLastName("LastName").setHeight(150).setWeight(160)
+        Player player = new Player().setFirstName("FirstName").setLastName("LastName").setHeight(150).setWeight(100)
                 .setDateOfBirth(new Date());
         TeamManager teamManager = new TeamManager().setName("TeamManager").setAddress("Address").setContact("Contact");
         Team team = new Team().setName("Team").setAgeGroup(AgeGroup.JUNIOR).setTeamManager(teamManager);

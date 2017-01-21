@@ -96,22 +96,12 @@ public class PlayerController {
     }
 
     @Secured("ROLE_ADMIN")
-    @RequestMapping(value="/available-teams", method = RequestMethod.GET)
-    public String getAvailableTeams(@PathVariable("id") long id, Model model) {
-        PlayerDto player = playerFacade.getPlayer(id);
-        List<TeamDto> teams = teamFacade.getAllowedTeams(player);
-
-        model.addAttribute("teams", teams);
-
-        return "team/list/available";
-    }
-
-    @Secured("ROLE_ADMIN")
     @RequestMapping(value = "/{id}/membership", method = RequestMethod.GET)
     public String assignPlayer(@PathVariable("id") long id, Model model, UriComponentsBuilder uriBuilder){
         PlayerDto player = playerFacade.getPlayer(id);
         model.addAttribute("player", player);
-        model.addAttribute("teams", teamFacade.getAllTeams());
+        List<TeamDto> teams = teamFacade.getAllowedTeams(player);
+        model.addAttribute("teams", teams);
         model.addAttribute("memberships", player.getMemberships());
 
         return "redirect:" + uriBuilder.path("/player/" + id + "/membership/refresh").toUriString();

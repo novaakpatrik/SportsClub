@@ -33,7 +33,8 @@ public class MembershipRepositoryTest extends AbstractTestNGSpringContextTests {
     @Inject
     private PlayerDao playerDao;
 
-    @Inject TeamDao teamDao;
+    @Inject
+    private TeamDao teamDao;
     
     private final EntityFactoryPersistence entityFactoryPersistence = new EntityFactoryPersistence();
     

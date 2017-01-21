@@ -69,6 +69,6 @@ public class TeamDaoImpl implements TeamDao {
         teamCriteria.select(teamRoot);
         teamCriteria.where(criteriaBuilder.equal(teamRoot.get("ageGroup"), ageGroup));
         List<Team> resultList = em.createQuery(teamCriteria).getResultList();
-        return resultList.isEmpty() ? null : resultList;
+        return resultList;
     }
 }

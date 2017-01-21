@@ -3,14 +3,12 @@ package cz.muni.fi.pa165.sportsclub.entity;
 import java.util.Objects;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 
 /**
- * Entity class which represents relationshiop between {@link Player} and
+ * Entity class which represents relationship between {@link Player} and
  * {@link Team}.
- * 
+ *
  * @author Jakub Smolar
  */
 @Entity
@@ -81,9 +79,9 @@ public class Membership {
             return false;
         if (!getPlayer().equals(that.getPlayer()))
             return false;
-        return getJerseyNumber() != null ?
-            getJerseyNumber().equals(that.getJerseyNumber()) :
-            that.getJerseyNumber() == null;
+        return (getJerseyNumber() != null)
+                ? getJerseyNumber().equals(that.getJerseyNumber())
+                : (that.getJerseyNumber() == null);
 
     }
 

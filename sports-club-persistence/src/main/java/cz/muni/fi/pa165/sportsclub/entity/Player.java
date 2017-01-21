@@ -1,13 +1,14 @@
 package cz.muni.fi.pa165.sportsclub.entity;
 
-import java.util.*;
+
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.util.*;
 
 /**
  * Entity class which represents a player in SportsClub. Player can be a member
- * of multiple teams, which is represented via {@link Membership}
- * 
+ * of multiple {@link Team}s, which is represented via {@link Membership}
+ *
  * @author Patrik Novak
  */
 @Entity
@@ -22,11 +23,13 @@ public class Player {
 
     @NotNull
     private String lastName;
-    
+
     @Min(0)
+    @Max(230)
     private int height;
 
     @Min(0)
+    @Max(130)
     private int weight;
 
     @NotNull
@@ -35,15 +38,7 @@ public class Player {
     private Date dateOfBirth;
 
     @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "player")
-    private Set<Membership> memberships = new HashSet<>();
-
-    public Player() {
-
-    }
-
-    public Player(Long id) {
-        this.id = id;
-    }
+    private Collection<Membership> memberships;
 
     public long getId() {
         return id;
@@ -103,20 +98,17 @@ public class Player {
         return this;
     }
 
-    public Set<Membership> getMemberships() {
-        return Collections.unmodifiableSet(memberships);
+    public Collection<Membership> getMemberships() {
+        return Collections.unmodifiableCollection(memberships);
     }
 
-//    public void setMemberships(Set<Membership> memberships) {
-//        this.memberships = memberships;
-//    }
+    public Player setMemberships(Set<Membership> memberships) {
+        this.memberships = memberships;
+        return this;
+    }
 
     public void addMembership(Membership membership) {
         memberships.add(membership);
-    }
-
-    public void removeMembership(Membership membership) {
-        memberships.remove(membership);
     }
 
     @Override

@@ -94,11 +94,11 @@ public class PlayerDto {
     }
 
     public Date getDateOfBirth() {
-        return dateOfBirth;
+        return new Date(dateOfBirth.getTime());
     }
 
     public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+        this.dateOfBirth = new Date(dateOfBirth.getTime());
     }
 
     public Set<MembershipDto> getMemberships() {

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="PersistenceSuite">
+
+    <test name="MembershipRepositoryTest">
+        <classes>
+            <class name="cz.muni.fi.pa165.sportsclub.dao.MembershipRepositoryTest" />
+        </classes>
+    </test>
+
+    <test name="PlayerRepositoryTest">
+        <classes>
+            <class name="cz.muni.fi.pa165.sportsclub.dao.PlayerRepositoryTest" />
+        </classes>
+    </test>
+
+    <test name="TeamRepositoryTest">
+        <classes>
+            <class name="cz.muni.fi.pa165.sportsclub.dao.TeamRepositoryTest" />
+        </classes>
+    </test>
+
+    <test name="TeamManagerRepositoryTest">
+        <classes>
+            <class name="cz.muni.fi.pa165.sportsclub.dao.TeamManagerRepositoryTest" />
+        </classes>
+    </test>
+
+    <test name="AgeGroupTest">
+        <classes>
+            <class name="cz.muni.fi.pa165.sportsclub.enumeration.AgeGroupTest" />
+        </classes>
+    </test>
+</suite>

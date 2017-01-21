@@ -14,7 +14,7 @@ public class AgeGroupTest {
 
     @DataProvider
     public static Object[][] getByDateDataProvider() {
-        return new Object[][] {
+        return new Object[][]{
                 {5, -1, AgeGroup.JUVENILE},
                 {9, +1, AgeGroup.JUVENILE},
                 {10, -1, AgeGroup.JUNIOR},
@@ -35,7 +35,7 @@ public class AgeGroupTest {
     public void getByDateTest(int years, int deviation, AgeGroup expected) {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, deviation);
-        cal.add(Calendar.YEAR, - years);
+        cal.add(Calendar.YEAR, -years);
 
         AgeGroup result = AgeGroup.getByDate(cal.getTime());
 
@@ -44,7 +44,7 @@ public class AgeGroupTest {
 
     @DataProvider
     public static Object[][] getByLabelDataProvider() {
-        return new Object[][] {
+        return new Object[][]{
                 {AgeGroup.JUVENILE.getLabel(), AgeGroup.JUVENILE},
                 {AgeGroup.JUNIOR.getLabel(), AgeGroup.JUNIOR},
                 {AgeGroup.YOUTH.getLabel(), AgeGroup.YOUTH},
@@ -64,7 +64,7 @@ public class AgeGroupTest {
 
     @DataProvider
     public static Object[][] getOlderGroupDataProvider() {
-        return new Object[][] {
+        return new Object[][]{
                 {AgeGroup.JUVENILE, AgeGroup.JUNIOR},
                 {AgeGroup.JUNIOR, AgeGroup.YOUTH},
                 {AgeGroup.YOUTH, AgeGroup.ADULT},
@@ -75,7 +75,7 @@ public class AgeGroupTest {
     }
 
     @Test(dataProvider = "getOlderGroupDataProvider")
-    public void getOlderGroupTest(AgeGroup tested, AgeGroup expected){
+    public void getOlderGroupTest(AgeGroup tested, AgeGroup expected) {
         AgeGroup result = AgeGroup.getOlderGroup(tested);
 
         Assert.assertEquals(result, expected);

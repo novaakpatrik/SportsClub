@@ -1,27 +1,15 @@
 package cz.muni.fi.pa165.sportsclub.entity;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import java.util.*;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 import cz.muni.fi.pa165.sportsclub.enumeration.AgeGroup;
 
 /**
- * Entity class which represents a team in SportsClub. Team can have several 
- * players, which is represented via {@link Membership}.
- * 
+ * Entity class which represents a team in SportsClub. Team can have several
+ * {@link Player}s, which is represented via {@link Membership}.
+ *
  * @author Fabian Norbert
  */
 
@@ -37,17 +25,13 @@ public class Team {
     private String name;
 
     @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "team")
-    private Set<Membership> memberships= new HashSet<>();
+    private Collection<Membership> memberships;
 
     @ManyToOne
     private TeamManager teamManager;
 
     @Enumerated
     private AgeGroup ageGroup;
-
-    public Team() {
-//        this.memberships = new HashSet<>();
-    }
 
     public long getId() {
         return id;
@@ -85,16 +69,17 @@ public class Team {
         return this;
     }
 
-    public void addMembership(Membership membership) {
+    public Team addMembership(Membership membership) {
         memberships.add(membership);
+        return this;
     }
 
-    public void removeMemebership(Membership membership) {
-        memberships.remove(membership);
+    public Team setMemberships(Collection<Membership> memberships){
+        this.memberships = memberships;
+        return this;
     }
-
-    public Set<Membership> getMemberships() {
-        return Collections.unmodifiableSet(memberships);
+    public Collection<Membership> getMemberships() {
+        return Collections.unmodifiableCollection(memberships);
     }
 
     @Override

@@ -42,8 +42,8 @@ public class SampleDataLoaderImpl implements SampleDataLoader {
         //TEAMS
         Team team1 = new Team().setName("Team1").setAgeGroup(AgeGroup.JUNIOR);
         Team team2 = new Team().setName("Team2").setAgeGroup(AgeGroup.SENIOR);
-        TeamDto team = new TeamDto();
-        team.setName("Team3");
+//        TeamDto team = new TeamDto();
+//        team.setName("Team3");
 
         //TEAM MANAGERS
         TeamManager teamManager1 = new TeamManager().setName("Chuck Norris").setAddress("World")
@@ -65,12 +65,12 @@ public class SampleDataLoaderImpl implements SampleDataLoader {
         Player player6 = new Player().setFirstName("Jozef").setLastName("Salat").setHeight(167).setWeight(89)
             .setDateOfBirth(createDate("04/12/1959"));
 
-        PlayerDto player = new PlayerDto();
-        player.setFirstName("Norbert");
-        player.setLastName("Fabian");
-        player.setHeight(190);
-        player.setWeight(110);
-        player.setDateOfBirth(createDate("03/08/2005"));
+//        PlayerDto player = new PlayerDto();
+//        player.setFirstName("Norbert");
+//        player.setLastName("Fabian");
+//        player.setHeight(190);
+//        player.setWeight(110);
+//        player.setDateOfBirth(createDate("03/08/2005"));
 
         //MEMBERSHIPS
         Membership membership1 = new Membership().setTeam(team1).setPlayer(player1).setJerseyNumber(1);

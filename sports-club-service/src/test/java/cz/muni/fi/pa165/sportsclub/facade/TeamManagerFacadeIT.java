@@ -92,30 +92,4 @@ public class TeamManagerFacadeIT extends AbstractTransactionalTestNGSpringContex
         Assert.assertEquals(dtos.get(0).getName(), "TestName1");
         Assert.assertEquals(dtos.get(1).getName(), "TestName2");
     }
-    
-    @Test
-    public void removeTeamFromTeamManagerTest() {
-        TeamManager tm = entityFactoryService.createPersistedTeamManager("TestName1", tmDao);
-        
-        Team team1 = entityFactoryService.createPersistedTeam("TestTeam1", teamDao);
-        Team team2 = entityFactoryService.createPersistedTeam("TestTeam2", teamDao);
-        tm.addTeam(team1);
-        tm.addTeam(team2);
-        
-        List<Team> teams = new ArrayList<>(tm.getTeams());
-        
-        Assert.assertEquals(teams.size(), 2);
-        
-        TeamManagerDto tmDto = tmFacade.getTeamManager(tm.getId());
-        
-        Assert.assertEquals(tmDto.getName(), tm.getName());
-        
-        Assert.assertEquals(tmFacade.getTeamManager(tm.getId()).getTeams().size(), 2);
-        
-        tmFacade.removeTeamFromTeamManager(tm.getId(), team1.getId());
-        
-        Assert.assertEquals(tmFacade.getTeamManager(tm.getId()).getTeams().size(), 1);
-        Assert.assertEquals(tmFacade.getTeamManager(tm.getId()).getTeams().get(0).getName(), team2.getName());
-    }
-    
 }

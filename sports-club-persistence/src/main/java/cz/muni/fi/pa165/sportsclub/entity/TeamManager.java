@@ -28,11 +28,7 @@ public class TeamManager {
     private String contact;
 
     @OneToMany(mappedBy = "teamManager")
-    private Set<Team> teams;
-    
-    public TeamManager() {
-        this.teams = new HashSet<>();
-    }
+    private Collection<Team> teams;
 
     public long getId() {
         return id;
@@ -70,52 +66,17 @@ public class TeamManager {
         return this;
     }
 
-    
-    /**
-     * Get list of teams that belong to Team manager
-     * 
-     * @return list of teams
-     */
-    public Set<Team> getTeams() {
-        return Collections.unmodifiableSet(teams);
+    public Collection<Team> getTeams() {
+        return Collections.unmodifiableCollection(teams);
     }
-    
-    /**
-     * Adds a team to Team manager.
-     * 
-     * @param team to be added
-     * @return this TeamManager
-     */
+
+    public TeamManager setTeams(Collection<Team> teams) {
+        this.teams = teams;
+        return this;
+    }
+
     public TeamManager addTeam(Team team) {
         this.teams.add(team);
-        return this;
-    }
-
-    /**
-     * Removes a team from Team manager.
-     * 
-     * @param team to be removed
-     * @return this TeamManager
-     */
-    public TeamManager removeTeam(Team team) {
-        this.teams.remove(team);
-        return this;
-    }
-
-    /**
-     * Removes a team from Team manager.
-     * 
-     * @param id of team to be removed
-     * @return this TeamManager
-     */
-    public TeamManager removeTeamById(long id) {
-        for (Iterator<Team> iterator = this.teams.iterator(); iterator.hasNext();) {
-            Team team =  iterator.next();
-            if (team.getId() == id) {
-                iterator.remove();
-            }
-        }
-        
         return this;
     }
 
@@ -134,11 +95,7 @@ public class TeamManager {
             return true;
         }
 
-        if (obj == null) {
-            return false;
-        }
-
-        if (!(obj instanceof TeamManager)) {
+        if ((obj == null) || !(obj instanceof TeamManager)) {
             return false;
         }
 

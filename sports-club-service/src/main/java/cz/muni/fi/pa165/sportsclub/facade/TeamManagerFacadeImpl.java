@@ -61,10 +61,4 @@ public class TeamManagerFacadeImpl implements TeamManagerFacade {
         
         return dtos;
     }
-    
-    @Override
-    public void removeTeamFromTeamManager(long tmId, long id) {
-        tmService.findById(tmId).removeTeamById(id);
-    }
-    
 }

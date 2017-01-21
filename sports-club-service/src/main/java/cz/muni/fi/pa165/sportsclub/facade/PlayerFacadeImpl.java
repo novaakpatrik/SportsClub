@@ -33,7 +33,6 @@ public class PlayerFacadeImpl implements PlayerFacade{
 
     @Override
     public void deletePlayer(long id) {
-        playerService.findById(id).getMemberships().stream().forEach(m -> m.getTeam().removeMemebership(m));
         playerService.removePlayer(id);
     }
 
